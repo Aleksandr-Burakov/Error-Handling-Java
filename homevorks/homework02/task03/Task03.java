@@ -12,7 +12,7 @@ public class Task03 {
        System.out.println(a / b);
        printSum(23, 234);
        int[] abc = { 1, 2 };
-       abc[1] = 9;
+       abc[3] = 9;
 
     // Вызов в первом блоке catch супперкласс Throwable, приведет к неисполнению 
     // последующих исключений в блоках catch, так как супперкласс Throwable в Иерархии

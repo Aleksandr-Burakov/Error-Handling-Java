@@ -1,4 +1,5 @@
 package homevorks.homework02.task01;
+
 import java.util.Locale;
 import java.util.Scanner;
 
