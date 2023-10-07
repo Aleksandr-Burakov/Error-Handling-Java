@@ -34,10 +34,10 @@ public class Task03 {
     // данный тип исключения лишний. 
     // Вместо FileNotFoundException можно обработать в данном контексте NullPointerException
     // Уведомив другие методы, что printSum может вызвать исключение NullPointerException
-    //  и создали throw для выброса исключений.
+    // и создали throw для выброса исключений.
 
     public static void printSum(Integer a, Integer b) throws NullPointerException {
-        if(a == null || b == null) throw new NullPointerException("Ух ты...!!! Обращение к несуществующему объекту!");
+        if(a == null || b == null) throw new NullPointerException("Возможно указывает на null!");
         System.out.println(a + b);
     }
 }

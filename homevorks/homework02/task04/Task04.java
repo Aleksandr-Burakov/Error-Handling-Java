@@ -1,10 +1,9 @@
-package homevorks.homework02.task04;
-
-import java.util.Scanner;
-
 // Разработайте программу, которая выбросит Exception,
 // когда пользователь вводит пустую строку. 
 // Пользователю должно показаться сообщение, что пустые строки вводить нельзя.
+
+package homevorks.homework02.task04;
+import java.util.Scanner;
 
 public class Task04 {
 
