@@ -40,10 +40,11 @@ public class Main {
         isFirstLastName(str);
     }  
     public static void isFirstLastName(String str) {
-        Pattern pattern = Pattern.compile("\\s*(\\D+\\s\\D+\\s\\D+)\\s([00-31]{2}\\.[00-12]{2}\\.[1901-2022]{4})\\s((\\+*)\\d{2}+)\\s([f,m]{1}+)\\s*");
+        Pattern pattern = Pattern.compile("\\s*(\\D+\\s\\D+\\s\\D+)\\s([01-31]{2}\\.[01-12]{2}\\.[1901-2022]{4})\\s((\\+*)\\d{2}+)\\s([f,m]{1}+)\\s*");
         Matcher matcher = pattern.matcher(str);
         if (matcher.find()){
-            System.out.println("Отлично!!! Введенная строка: " + matcher.group());    
+            String dataUser = matcher.group();
+            System.out.println("Отлично!!! Введенная строка: " + dataUser);    
             } 
         else{
             System.out.println("Введенная строка " + str + " не совпадает с параметрами: ");   
