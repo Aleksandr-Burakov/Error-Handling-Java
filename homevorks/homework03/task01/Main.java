@@ -34,13 +34,17 @@ public class Main {
  
   
     public static void main(String[] args) {
-        System.out.println("Введите Ф.И.О.: ");
+        System.out.println("Введите в одну строку, всё через пробел: \n        " + // 
+                           "Фамилию Имя Отчество \n\n" + // 
+                           "Дату рождения: \n        dd.mm.yyyy \n\n" + //
+                           "Номер телефона: \n        +11 цифр \n\n" + //
+                           "Пол - символ латиницей: \n        f или m \n");
         ScannerUserInput scanner = new ScannerUserInput();
         String str = scanner.getUserInput();
-        isFirstLastName(str);
+        isFirstLastName2(str);
     }  
     public static void isFirstLastName(String str) {
-        Pattern pattern = Pattern.compile("\\s*(\\D+\\s\\D+\\s\\D+)\\s([01-31]{2}\\.[01-12]{2}\\.[1901-2022]{4})\\s((\\+*)\\d{2}+)\\s([f,m]{1}+)\\s*");
+        Pattern pattern = Pattern.compile("\\s*(\\D+\\s\\D+\\s\\D+)\\s([01-31]{2}+\\.[01-12]{2}+\\.[1901-2022]{4}+)\\s((\\+*)\\d{2}+)\\s([f,m]{1}+)\\s*");
         Matcher matcher = pattern.matcher(str);
         if (matcher.find()){
             String dataUser = matcher.group();
@@ -49,7 +53,21 @@ public class Main {
         else{
             System.out.println("Введенная строка " + str + " не совпадает с параметрами: ");   
         }       
-    }           
+    }  
+    
+      public static Boolean isFirstLastName2(String str) {
+        String pattern = str;
+        Boolean matcher = pattern.matches("\\s*(\\D+\\s\\D+\\s\\D+)\\s([01-31]{2}+\\.[01-12]{2}+\\.[1901-2022]{4}+)\\s((\\+*)\\d{2}+)\\s([f,m]{1}+)\\s*");
+        if (matcher){
+            System.out.println("Отлично!!! Введенная строка: " + matcher);    
+            } 
+        else{
+            System.out.println("Введенная строка " + str + " не совпадает с параметрами: ");   
+        }
+        return matcher;       
+    }    
+
+
 }  
 
       
