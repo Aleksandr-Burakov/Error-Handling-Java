@@ -37,14 +37,15 @@ public class Main {
         System.out.println("Введите в одну строку, всё через пробел: \n        " + // 
                            "Фамилию Имя Отчество \n\n" + // 
                            "Дату рождения: \n        dd.mm.yyyy \n\n" + //
-                           "Номер телефона: \n        +11 цифр \n\n" + //
+                           "Номер телефона: \n        +2 цифры \n\n" + //
                            "Пол - символ латиницей: \n        f или m \n");
         ScannerUserInput scanner = new ScannerUserInput();
         String str = scanner.getUserInput();
-        isFirstLastName2(str);
+        isFirstLastName(str);
     }  
     public static void isFirstLastName(String str) {
-        Pattern pattern = Pattern.compile("\\s*(\\D+\\s\\D+\\s\\D+)\\s([01-31]{2}+\\.[01-12]{2}+\\.[1901-2022]{4}+)\\s((\\+*)\\d{2}+)\\s([f,m]{1}+)\\s*");
+        Pattern pattern = Pattern.compile("\\s*(\\D+\\s\\D+\\s\\D+)\\s" + //
+        "([01-31]{2}+\\.[01-12]{2}+\\.[1901-2022]{4}+)\\s((\\+*)\\d{2}+)\\s([f,m]{1}+)\\s*");
         Matcher matcher = pattern.matcher(str);
         if (matcher.find()){
             String dataUser = matcher.group();
@@ -57,7 +58,8 @@ public class Main {
     
       public static Boolean isFirstLastName2(String str) {
         String pattern = str;
-        Boolean matcher = pattern.matches("\\s*(\\D+\\s\\D+\\s\\D+)\\s([01-31]{2}+\\.[01-12]{2}+\\.[1901-2022]{4}+)\\s((\\+*)\\d{2}+)\\s([f,m]{1}+)\\s*");
+        Boolean matcher = pattern.matches("\\s*(\\D+\\s\\D+\\s\\D+)\\s" + //
+        "([01-31]{2}+\\.[01-12]{2}+\\.[1901-2022]{4}+)\\s((\\+*)\\d{2}+)\\s([f,m]{1}+)\\s*");
         if (matcher){
             System.out.println("Отлично!!! Введенная строка: " + matcher);    
             } 
