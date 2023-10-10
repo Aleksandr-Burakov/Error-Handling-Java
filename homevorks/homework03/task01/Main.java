@@ -1,6 +1,33 @@
+// Напишите приложение, которое будет запрашивать у пользователя следующие данные
+// в произвольном порядке, разделенные пробелом:
+// Фамилия Имя Отчество дата рождения номер телефона пол
+// Форматы данных:
+// фамилия, имя, отчество - строки
+// дата рождения - строка формата dd.mm.yyyy
+// номертелефона - целое беззнаковое число без форматирования
+// пол - символ латиницей f или m.
+// Приложение должно проверить введенные данные по количеству. 
+// Если количество не совпадает с требуемым, вернуть код ошибки,
+// обработать его и показать пользователю сообщение, 
+// что он ввел меньше и больше данных, чем требуется.
+// Приложение должно попытаться распарсить полученные значения и 
+// выделить из них требуемые параметры. Если форматы данных не совпадают,
+// нужно бросить исключение, соответствующее типу проблемы.
+// Можно использовать встроенные типы java и создать свои. Исключение должно быть корректно обработано, пользователю выведено сообщение с информацией, что именно неверно.
+// Если всё введено и обработано верно, должен создаться файл с названием,
+// равным фамилии, в него в одну строку должны записаться полученные данные,
+// вида <Фамилия><Имя><Отчество><датарождения> <номертелефона><пол>
+// Однофамильцы должны записаться в один и тот же файл, в отдельные строки.
+// Не забудьте закрыть соединение с файлом.
+// При возникновении проблемы с чтением-записью в файл,
+// исключение должно быть корректно обработано, пользователь должен увидеть стектрейс ошибки.
+
+
+
 package homevorks.homework03.task01;
 import java.util.Scanner;
 import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 public class Main {
 
     
@@ -10,90 +37,21 @@ public class Main {
         System.out.println("Введите Ф.И.О.: ");
         ScannerUserInput scanner = new ScannerUserInput();
         String str = scanner.getUserInput();
-        // System.out.println(str);
-        // System.out.println(isNumber2(str));
-        // System.out.println(isAlphabetEU(str));
-        System.out.println(isAlphabetRU(str));
-        // System.out.println(isNumberPhone(str));
-        // System.out.println(isFirstLastName(str));
-        // isFirstLastName(str);
-    }
-
-    public static boolean isNumber2(String str) {
-        String string = "0123456789";
-        for (char elem : str.toCharArray()) {
-          if (!string.contains(String.valueOf(elem))) {
-            return false;
-          }
-        }
-        return true;
-    }
-
-    public static boolean isAlphabetRU(String str) {
-
- String input = str;
-        boolean result = input.matches("[а-яА-Я](\\D*)");
-        if(result){
-        System.out.println("Это нужные Буквы");
-        }
-        else{
-        System.out.println("Это не Буквы");    
-        }
-        return result;
-
-        // String string = "АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя";
-        // // String string = str;
-        // // string.matches("[а-я||А-Я]");
-        // for (char elem : str.toCharArray()) {
-        //   if (!string.contains(String.valueOf(elem))) {
-        //     return false;
-        //   }
-        // }
-        // return true;    
-    }
-
-    public static boolean isAlphabetEU(String str) {
-        // String string = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";
-        // // String string = str;
-        // // string.matches("[a-z||A-Z]");
-        // for (char elem : str.toCharArray()) {
-        //   if (!string.contains(String.valueOf(elem))) {
-        //     return false;
-        //   }
-        // }
-        // return true;    
-
-        String input = str;
-        boolean result = input.matches("[a-zA-Z](\\D*)");
-        if(result){
-        System.out.println("Это нужные Буквы");
-        }
-        else{
-        System.out.println("Это не Буквы");    
-        }
-        return result;
-    }
-
-    public static boolean isNumberPhone(String str){
-        String input = str;
-        boolean result = input.matches("(\\+*)\\d{11}");
-        if(result){
-        System.out.println("Это телефонный номер");
-        }
-        else{
-        System.out.println("Это не телефонный номер");    
-        }
-        return result;
-    }
-
+        isFirstLastName(str);
+    }  
     public static void isFirstLastName(String str) {
-        Pattern pattern = Pattern.compile("\\s*(\\s|,|!|\\.)\\s*"); 
-        String input = str;
-        String[] words = pattern.split(input);
-        for(String word:words){
-            System.out.print(word);
-        }
-            
-        // return input;
-    }   
-}
+        Pattern pattern = Pattern.compile("\\s*(\\D+\\s\\D+\\s\\D+)\\s([00-31]{2}\\.[00-12]{2}\\.[1901-2022]{4})\\s((\\+*)\\d{2}+)\\s([f,m]{1}+)\\s*");
+        Matcher matcher = pattern.matcher(str);
+        if (matcher.find()){
+            System.out.println("Отлично!!! Введенная строка: " + matcher.group());    
+            } 
+        else{
+            System.out.println("Введенная строка " + str + " не совпадает с параметрами: ");   
+        }       
+    }           
+}  
+
+      
+
+
+   
