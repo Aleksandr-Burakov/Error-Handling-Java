@@ -50,6 +50,7 @@
         } catch (DividedByZero e) {
           System.out.println(e.getMessage());
         }
+
         int[] array = new int[2];
         try {
           if (indexcheck(array.length, 3)) {
@@ -58,6 +59,7 @@
         } catch (IndexOutOfBoundries e) {
           System.out.println(e.getMessage());
         }
+        
         String path = "123";
         try (FileReader in = new FileReader(path)) {
           in.close();

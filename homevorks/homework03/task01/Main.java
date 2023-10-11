@@ -13,7 +13,9 @@
 // Приложение должно попытаться распарсить полученные значения и 
 // выделить из них требуемые параметры. Если форматы данных не совпадают,
 // нужно бросить исключение, соответствующее типу проблемы.
-// Можно использовать встроенные типы java и создать свои. Исключение должно быть корректно обработано, пользователю выведено сообщение с информацией, что именно неверно.
+// Можно использовать встроенные типы java и создать свои. 
+// Исключение должно быть корректно обработано, 
+// пользователю выведено сообщение с информацией, что именно неверно.
 // Если всё введено и обработано верно, должен создаться файл с названием,
 // равным фамилии, в него в одну строку должны записаться полученные данные,
 // вида <Фамилия><Имя><Отчество><датарождения> <номертелефона><пол>
@@ -22,57 +24,32 @@
 // При возникновении проблемы с чтением-записью в файл,
 // исключение должно быть корректно обработано, пользователь должен увидеть стектрейс ошибки.
 
-
-
 package homevorks.homework03.task01;
-import java.util.Scanner;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 public class Main {
+  public static void main(String[] args) {
 
-    
- 
-  
-    public static void main(String[] args) {
-        System.out.println("Введите в одну строку, всё через пробел: \n        " + // 
-                           "Фамилию Имя Отчество \n\n" + // 
-                           "Дату рождения: \n        dd.mm.yyyy \n\n" + //
-                           "Номер телефона: \n        +2 цифры \n\n" + //
-                           "Пол - символ латиницей: \n        f или m \n");
-        ScannerUserInput scanner = new ScannerUserInput();
-        String str = scanner.getUserInput();
-        isFirstLastName(str);
-    }  
-    public static void isFirstLastName(String str) {
-        Pattern pattern = Pattern.compile("\\s*(\\D+\\s\\D+\\s\\D+)\\s" + //
-        "([01-31]{2}+\\.[01-12]{2}+\\.[1901-2022]{4}+)\\s((\\+*)\\d{2}+)\\s([f,m]{1}+)\\s*");
-        Matcher matcher = pattern.matcher(str);
-        if (matcher.find()){
-            String dataUser = matcher.group();
-            System.out.println("Отлично!!! Введенная строка: " + dataUser);    
-            } 
-        else{
-            System.out.println("Введенная строка " + str + " не совпадает с параметрами: ");   
-        }       
-    }  
-    
-      public static Boolean isFirstLastName2(String str) {
-        String pattern = str;
-        Boolean matcher = pattern.matches("\\s*(\\D+\\s\\D+\\s\\D+)\\s" + //
-        "([01-31]{2}+\\.[01-12]{2}+\\.[1901-2022]{4}+)\\s((\\+*)\\d{2}+)\\s([f,m]{1}+)\\s*");
-        if (matcher){
-            System.out.println("Отлично!!! Введенная строка: " + matcher);    
-            } 
-        else{
-            System.out.println("Введенная строка " + str + " не совпадает с параметрами: ");   
-        }
-        return matcher;       
-    }    
+  System.out.println("Введите в одну строку, всё через пробел: \n        " + // 
+                      "Фамилию Имя Отчество \n\n" + // 
+                      "Дату рождения: \n        dd.mm.yyyy \n\n" + //
+                      "Номер телефона: \n        +2 цифры \n\n" + //
+                      "Пол - символ латиницей: \n        f или m \n");
 
-
+  String str = UserInput.getUserInput();       
+  String text =str; // строка для записи
+    try(FileOutputStream file = new FileOutputStream("J:\\GeekBrains\\Обучение GeekBrains" + //
+    "\\Обучение Программирование\\Занятие_12. Исключения в программировании и их обработка\\" + //
+    "Error Git\\Error-Handling-Java\\homevorks\\homework03\\task01\\dataUser.txt", true))
+    {  
+    byte[] buffer = text.getBytes(); // перевод строки в байты   
+    file.write(buffer, 0, buffer.length);
+    System.out.println("Файл записан");
+    }
+    catch(IOException ex){       
+      System.out.println(ex.getMessage());
+      }  
+  }
 }  
 
-      
-
-
-   
