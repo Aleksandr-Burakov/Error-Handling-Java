@@ -1,6 +1,11 @@
 package homevorks.homework03.task01;
 import java.util.Scanner; 
-class UserPresenterView {
+public class UserPresenterView {
+
+
+  public void printError (String errorMessage) {
+    System.err.println("Вы ввели не коректно " + errorMessage);
+    }  
 
   public void printResult(String result) {
     System.out.println(" \n Данные пользователя: " + "\n" + result);
@@ -12,4 +17,3 @@ class UserPresenterView {
     return result; 
     }
 }
-

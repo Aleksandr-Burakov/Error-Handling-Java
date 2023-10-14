@@ -2,7 +2,7 @@ package homevorks.homework03.task01;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class UserPresenterModel {
+public class UserPresenterModel {
 
     public String add(String num1, String num2, String num3, String num4) {
         return num1 + num2 + num3 + num4;     
@@ -20,8 +20,7 @@ class UserPresenterModel {
         } 
          catch (Exception e) {
            printError("Фамилию Имя Отчество, повторите ввод."); 
-        }
-               
+        }       
       return text;  
     }
 
@@ -36,9 +35,8 @@ class UserPresenterModel {
             }         
             
         } catch (Exception e) {
-            printError("дату, повторите ввод. ");  
-        }
-                      
+            printError("дату, повторите ввод. "); 
+        }             
         return text;      
     }  
 
@@ -53,7 +51,7 @@ class UserPresenterModel {
             } 
         } 
         catch (Exception e) {
-            printError("номер телефона, повторите ввод. "); 
+            printError("номер телефона, повторите ввод. ");
         }    
         return number;       
     }

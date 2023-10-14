@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
-class DataUserPresenter {
+public class DataUserPresenter {
 
     private UserPresenterModel model;
     private UserPresenterView view;
