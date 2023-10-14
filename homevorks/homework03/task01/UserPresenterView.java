@@ -11,7 +11,7 @@ public class UserPresenterView {
     System.out.println(" \n Данные пользователя: " + "\n" + result);
     }
 
-  public static String getUserInput(){
+  public String getUserInput(){
     Scanner scanner = new Scanner(System.in, "Cp866");
     String result = scanner.nextLine();
     return result; 
