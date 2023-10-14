@@ -25,11 +25,7 @@
 // исключение должно быть корректно обработано, пользователь должен увидеть стектрейс ошибки.
 
 package homevorks.homework03.task01;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Scanner;
-import java.io.*;
 public class Main {
   public static void main(String[] args) {
  
@@ -52,44 +48,7 @@ public class Main {
   System.out.println("\n Введите в одну строку Пол - символ латиницей: \n f или m ");
   String num4 = view.getUserInput();
   String num44 = model.getsexUser(num4);
-  
-  scanner.close();
   controll.dataUserString(num11, num22, num33, num44);
-  
-
-        
-         
-        
-        // try(FileWriter writer = new FileWriter("dataUser.txt", true ))
-        // {
-        //    // запись всей строки
-        //     String text = str ;
-        //     writer.write(text);
-        //     // запись по символам
-        //     writer.append('\n');
-        //     writer.append('E');
-             
-        //     writer.flush();
-        // }
-        // catch(IOException ex){
-             
-        //     System.out.println(ex.getMessage());
-        // } 
-
-
-
-  // String text =str; // строка для записи
-  //   try(FileOutputStream file = new FileOutputStream("J:\\GeekBrains\\Обучение GeekBrains" + //
-  //   "\\Обучение Программирование\\Занятие_12. Исключения в программировании и их обработка\\" + //
-  //   "Error Git\\Error-Handling-Java\\homevorks\\homework03\\task01\\dataUser.txt", true))
-  //   {  
-  //   byte[] buffer = text.getBytes(); // перевод строки в байты   
-  //   file.write(buffer, 0, buffer.length);
-  //   System.out.println("Файл записан");
-  //   }
-  //   catch(IOException ex){       
-  //     System.out.println(ex.getMessage());
-  //     }  
+  scanner.close();
   }
-}  
-
+}
